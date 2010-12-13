@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	width="100%" height="100%" xmlns:local="*">
+	<mx:VBox height="100%">
+		<mx:LinkBar direction="vertical" dataProvider="{stack}"/>
+	</mx:VBox>
+	<mx:Spacer width="40" />
+	<mx:ViewStack width="100%" height="100%" id="stack">
+		<local:XComboboxdemo width="100%" height="100%" label="XComboBox"/>
+	</mx:ViewStack>
+</mx:Application>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 width="100%"
+		 height="100%"
+		 initialize="onInit()" xmlns:xcombobox="com.xebia.components.xcombobox.*">
+	<mx:Script>
+		<![CDATA[
+			import vo.TempVo;
+			import mx.collections.ArrayCollection;
+
+			[Bindable]
+			private var list:ArrayCollection = new ArrayCollection();
+
+			public function onInit():void
+			{
+				list.addItem(new TempVo("Sohil"));
+				list.addItem(new TempVo("Sourabh"));
+				list.addItem(new TempVo("Amit"));
+				list.addItem(new TempVo("Vijay"));
+				
+				box.dataProvider = list;
+				box1.dataProvider = list;
+			}
+
+
+			private function onLabelFunction(value:TempVo):String
+			{
+				return value.name;
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox>
+	
+	<xcombobox:XComboBox
+		 id="box" labelFunction="onLabelFunction"
+				 showChoose="true"/>
+		<mx:Text text="{box.selectedItem ? onLabelFunction(box.selectedItem as TempVo) : 'nothing'}" />
+	</mx:HBox>
+
+	<mx:HBox>
+		<xcombobox:XComboBox id="box1"
+							 labelField="name"
+								 showChoose="true"/>
+		<mx:Text text="{box1.selectedItem ? onLabelFunction(box1.selectedItem as TempVo) : 'nothing'}" />
+	</mx:HBox>
+
+	<mx:HBox>
+		<xcombobox:XComboBox id="box3"
+							 labelField="name"
+								 showChoose="false"/>
+		<mx:Text text="{box1.selectedItem ? onLabelFunction(box1.selectedItem as TempVo) : 'nothing'}" />
+		
+	</mx:HBox>
+	<mx:Button click="{box3.dataProvider = list}" />
+</mx:VBox>
